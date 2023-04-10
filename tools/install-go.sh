@@ -17,6 +17,8 @@ preflight () {
     case "$(uname -m)" in
 	amd64) ARCH="amd64" ;;
 	arm64) ARCH="arm64" ;;
+    x86_64) ARCH="amd64" ;;
+
 	*)
 	    echo "[!] $(uname -m) is an unsupported architecture." > /dev/stderr
 	    echo '[!] supported architectures: amd64, arm64' > /dev/stderr
@@ -42,7 +44,7 @@ install_godeb () {
     popd
 }
 
-install_go {
+install_go () {
     pushd /tmp
     echo '[*] installing go - this will request sudo'
     godeb install "${GOVERSION}"
@@ -50,3 +52,7 @@ install_go {
     # if needed.
     popd
 }
+
+preflight
+install_godeb
+install_go
