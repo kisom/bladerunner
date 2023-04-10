@@ -3,8 +3,8 @@
 set -euxo pipefail
 
 INSTALL_DIR="/usr/local/bin"
-GODEB=https://godeb.s3.amazonaws.com/godeb-${ARCH}.tar.gz
 GOVERSION=1.20.3
+ARCH=amd64
 
 preflight () {
 
@@ -20,11 +20,13 @@ preflight () {
 	*)
 	    echo "[!] $(uname -m) is an unsupported architecture." > /dev/stderr
 	    echo '[!] supported architectures: amd64, arm64' > /dev/stderr
+        exit 1
 	    ;;
     esac
 }
 
 install_godeb () {
+    local GODEB=https://godeb.s3.amazonaws.com/godeb-${ARCH}.tar.gz
     if [ -x "${INSTALL_DIR}/godeb" ]
     then
 	return 0
