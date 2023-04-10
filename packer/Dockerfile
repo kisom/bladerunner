@@ -1,7 +1,11 @@
 # Set up a packer image in Docker.
 FROM ubuntu:22.04
-MAINTAINER Kyle Isom <kyle@imap.cc>
+LABEL org.opencontainers.image.authors=kyle@imap.cc
 
-add . packer
+ONBUILD RUN apt-get update && apt-get install git
+ONBUILD RUN git clone https://git.wntrmute.dev/kyle/bladerunner 
+ONBUILD RUN bladerunner/tools/install-go.sh
+
+ADD . packer
 
 ENTRYPOINT ["/usr/bin/env", "bash"]
