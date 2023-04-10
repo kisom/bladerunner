@@ -10,6 +10,7 @@ UPSTREAM="https://github.com/mkaczanowski/packer-builder-arm"
 UPGRADE="false"
 
 prep () {
+    sudo apt-get update && sudo apt-get -y install git unzip qemu-user-static e2fsprogs dosfstools 'bsdtar|libarchive-tools'
     mkdir -p build
     pushd build
 }
@@ -40,7 +41,7 @@ install_packer_builder_arm () {
     popd
 }
 
-cleanup {
+cleanup () {
     popd
 }
 
