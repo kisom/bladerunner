@@ -21,6 +21,7 @@
 
 ## Documentation
 
-- sphinx docs?
-  - with bazel integration?
+- meta
+  - sphinx docs?
+    - with bazel integration?
 - functional specs for everything
