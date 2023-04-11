@@ -8,11 +8,12 @@ ARCH=amd64
 PACKER_FILE=packer_${PACKER_VERSION}_linux_${ARCH}
 UPSTREAM="https://github.com/mkaczanowski/packer-builder-arm"
 UPGRADE="false"
+BUILD_DIR="$(pwd)/build"
 
 prep () {
     sudo apt-get update && sudo apt-get -y install git unzip qemu-user-static e2fsprogs dosfstools 'bsdtar|libarchive-tools'
-    mkdir -p build
-    pushd build
+    mkdir -p ${BUILD_DIR}
+    pushd ${BUILD_DIR}
 }
 
 install_packer () {

@@ -1,0 +1,6 @@
+- hosts: cluster
+  roles:
+    - base
+- hosts: blade-coral
+  roles:
+    - coral
