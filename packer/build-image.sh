@@ -33,5 +33,6 @@ preflight () {
 }
 
 build_image () {
+    cd build/packer-builder-arm
     packer build ${PACKER_BUILD_FILE}
 }
