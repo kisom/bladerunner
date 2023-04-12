@@ -9,12 +9,12 @@ PACKER_FILE=packer_${PACKER_VERSION}_linux_${ARCH}
 UPSTREAM="https://github.com/mkaczanowski/packer-builder-arm"
 UPGRADE="false"
 BUILD_DIR="$(pwd)/build"
-FORCE_DEPENDENCY_INSTALL="no"
+FORCE_DEPENDENCY_INSTALL="${FORCE_DEPENDENCY_INSTALL:-no}"
 
 prep () {
     if [ -z "$(command -v git)" -o "${FORCE_DEPENDENCY_INSTALL}" = "yes" ]
     then
-        sudo apt-get update && sudo apt-get -y install git unzip qemu-user-static e2fsprogs dosfstools libarchive-tools
+        sudo apt-get update && sudo apt-get -y install git unzip qemu-user-static e2fsprogs dosfstools libarchive-tools xz-utils jq
     fi
     mkdir -p ${BUILD_DIR}
     pushd ${BUILD_DIR}

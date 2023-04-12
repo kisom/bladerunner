@@ -5,10 +5,16 @@
 - bazel setup
 - tooling setup
 
+## Dockerfiles
+
+- move to an OCI setup
+
 ## Provisioning
 
 - packer image building
 - ansible deployment
+- initrd/initramfs for auto FDE
+  - using dracut?
 
 ## Secure computing
 
@@ -21,7 +27,4 @@
 
 ## Documentation
 
-- meta
-  - sphinx docs?
-    - with bazel integration?
 - functional specs for everything

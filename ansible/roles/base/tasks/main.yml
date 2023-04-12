@@ -1,0 +1,8 @@
+- name: set up TPM tooling
+  become: true
+  ansible.builtin.apt: name={{ item }} state=present
+  with_items:
+    - clevis-tpm2
+    - tpm-tools
+    - tpm2-tools
+    - tss2

@@ -11,6 +11,8 @@ There are some assumptions made:
    build system here will assume this. It may work on non-Ubuntu apt-based
    systems. For non-Debian systems, I've also been working on including
    container builds that may work.
+2. The primary target for this setup is Ubuntu 22.04. This needs to be 
+   validated still.
 
 There are three types of systems:
 
@@ -57,10 +59,34 @@ Below is a diagram of the planned system.
     }
 
 
-The hardware isn't slated to arrive until September at the earliest.
-
 Hardware
 --------
 
-Blades:
+The hardware isn't slated to arrive until September at the earliest. I am
+leaning towards having the 1TB NVMe drives go with the AI modules, and use
+the gateway system as the storage machine if needed.
+
++----------------------------+----------+----------------------------------------+
+| Item                       | Quantity | Notes                                  |
++----------------------------+----------+----------------------------------------+
+| TPM blade                  | 5        | TPM 2.0                                |
++----------------------------+----------+----------------------------------------+
+| DEV blade                  | 6        | TPM 2.0, µSD, nRPIBOOT                 |
++----------------------------+----------+----------------------------------------+
+| CM4                        | 10       | 8GB RAM, no eMMC/WiFi/BT               |
++----------------------------+----------+----------------------------------------+
+| CM4                        | 2        | 8 GB RAM, eMMC/WiFi/BT (gw, dev blade) |
++----------------------------+----------+----------------------------------------+
+| SAMSUNG 970 EVO Plus 500GB | 4/7      | 2280                                   |
++----------------------------+----------+----------------------------------------+
+| SAMSUNG 970 EVO Plus 1 TB  | 2/4      | 2280 (1 allocated to gw)               |
++----------------------------+----------+----------------------------------------+
+| RTC module                 | 10       | DS3231                                 |
++----------------------------+----------+----------------------------------------+
+| AI module                  | 3        | 2x Coral TPU                           |
++----------------------------+----------+----------------------------------------+
+| CM4 carrier board          | 1        | Dual-homed, NVMe slot, Zymbit 4i       |
++----------------------------+----------+----------------------------------------+
+| Netgear GS316PP            | 1        | 16-port PoE+ (183W)                    |
++----------------------------+----------+----------------------------------------+
 

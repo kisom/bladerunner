@@ -14,7 +14,9 @@ preflight () {
 
 apt_packages () {
     $SUDO apt-get update
-    $SUDO apt-get -y install git bash curl sudo build-essential
+    $SUDO apt-get -y install git bash curl sudo build-essential unzip \
+                             qemu-user-static e2fsprogs dosfstools    \
+                             libarchive-tools xz-utils
 }
 
 preflight

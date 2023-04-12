@@ -3,9 +3,10 @@
 set -euxo pipefail
 
 PACKER_IMAGE_NAME="bladerunner/packer:latest"
+FORCE_DOCKER_BUILD="${FORCE_DOCKER_BUILD:-no}"
 
 preflight () {
-    if [ -z "$(docker image ls -q ${PACKER_IMAGE_NAME})" ]
+    if [ "${FORCE_DOCKER_BUILD}" = "yes" -o -z "$(docker image ls -q ${PACKER_IMAGE_NAME})" ]
     then
         docker image build -t "${PACKER_IMAGE_NAME}" .
     fi
