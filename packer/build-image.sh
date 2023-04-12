@@ -12,7 +12,8 @@ errmsg () {
 preflight () {
     case "${IMAGE_TYPE}" in
         ubuntu) PACKER_BUILD_FILE="boards/cm4-cluster-ubuntu-22.04.2.json" ;;
-        raspbian) PACKER_BUILD_FILE="boards/raspberry-pi/raspios-lite-arm.json" ;;
+        ## TODO(kyle): look into building a Raspbian version if needed.
+        # raspbian) PACKER_BUILD_FILE="boards/raspberry-pi/raspios-lite-arm.json" ;;
         custom)
             if [ -z "${PACKER_BUILD_FILE}" ]
             then
@@ -23,7 +24,7 @@ preflight () {
         *)
             errmsg "[!] invalid image type ${IMAGE_TYPE}."
             errmsg "[!] valid image types are"
-            errmsg "    - raspbian"
+            # errmsg "    - raspbian"
             errmsg "    - ubuntu"
             errmsg "    - custom path/to/board/file"
             exit 1

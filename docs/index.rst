@@ -10,7 +10,9 @@ bladerunner
    :maxdepth: 2
    :caption: Contents:
 
+   intro
    packer
+   tools
 
 This is my setup for my
 `computeblade <https://publish.obsidian.md/ai6ua/Projects/Computing/ComputeBlade>`_
