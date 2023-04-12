@@ -4,7 +4,7 @@ import (
 	"flag"
 
 	"git.sr.ht/~kisom/goutils/die"
-	"git.wntrmute.dev/kyle/bladerunner/src/packer"
+	packer "git.wntrmute.dev/kyle/bladerunner/packer/packerlib"
 )
 
 func main() {

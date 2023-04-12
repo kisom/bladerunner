@@ -1,4 +1,4 @@
-package packer
+package packerlib
 
 type Provisioner map[string]interface{}
 

@@ -1,4 +1,4 @@
-package packer
+package packerlib
 
 // RootPartitionSizes describes how big a single root partition should
 // be given a standard 256M boot partition. This should cover standard

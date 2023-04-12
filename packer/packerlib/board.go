@@ -1,4 +1,4 @@
-package packer
+package packerlib
 
 type Board struct {
 	Variables      map[string]string `json:"variables"`

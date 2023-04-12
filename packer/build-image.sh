@@ -11,7 +11,7 @@ errmsg () {
 
 preflight () {
     case "${IMAGE_TYPE}" in
-        ubuntu) PACKER_BUILD_FILE="boards/pi-cm4-ubuntu-22.04.2.json" ;;
+        ubuntu) PACKER_BUILD_FILE="boards/cm4-cluster-ubuntu-22.04.2.json" ;;
         raspbian) PACKER_BUILD_FILE="boards/raspberry-pi/raspios-lite-arm.json" ;;
         custom)
             if [ -z "${PACKER_BUILD_FILE}" ]

@@ -1,4 +1,4 @@
-package packer
+package packerlib
 
 import (
 	"bytes"
@@ -96,7 +96,7 @@ func (spec UbuntuBoardSpec) Board() Board {
 }
 
 func LoadUbuntuSpecs(path string) (specFile UbuntuBoardSpecFile, err error) {
-	log.Println("loading from", specFile)
+	log.Println("loading from", path)
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		return
