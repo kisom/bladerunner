@@ -61,7 +61,6 @@ func (spec UbuntuBoardSpec) JSONPath(base string) string {
 	dest := spec.ImageName
 	ext := filepath.Ext(dest)
 	if ext != "" {
-		ext = "." + ext
 		dest = strings.TrimSuffix(dest, ext)
 	}
 

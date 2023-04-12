@@ -1,4 +1,4 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_binary")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 
 #go_library(
 #    name = "packer_lib",
@@ -13,9 +13,16 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary")
 
 go_binary(
     name = "ubuntu-board-gen",
-    srcs = ["ubuntu-board-gen.go"],
+    embed = [":packer_lib"],
     importpath = "git.wntrmute.dev/kyle/bladerunner/packer",
     visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "packer_lib",
+    srcs = ["ubuntu-board-gen.go"],
+    importpath = "git.wntrmute.dev/kyle/bladerunner/packer",
+    visibility = ["//visibility:private"],
     deps = [
         "//packer/packerlib",
         "@ht_sr_git_kisom_goutils//die",

@@ -35,10 +35,14 @@ install_packer () {
 install_packer_builder_arm () {
     if [ -x "${INSTALL_DIR}/packer-builder-arm" -a -z "${UPGRADE}" ]
     then
-	return 0
+	    return 0
     fi
 
-    git clone "${UPSTREAM}"
+    if [ ! -d "${UPSTREAM##*/}" ]
+    then
+        git clone "${UPSTREAM}"
+    fi
+
     pushd "${UPSTREAM##*/}"
     go mod download
     go build
