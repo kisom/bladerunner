@@ -12,7 +12,7 @@ The first time, make sure dependencies are installed and run ``./install-packer.
 
 1. If updates to the image spec are needed, edit `ubuntu-boards.yml` and run 
 
-.. shell ::
+.. code-block:: shell
     bazel run //packer:ubuntu-board-gen -f $(pwd)/ubuntu-boards.yml -o $(pwd)/boards
 
 This will place the board with a default name in the ``boards`` directory.
