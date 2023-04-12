@@ -92,3 +92,12 @@ the gateway system as the storage machine if needed.
 +----------------------------+----------+----------------------------------------+
 | Netgear GS316PP            | 1        | 16-port PoE+ (183W)                    |
 +----------------------------+----------+----------------------------------------+
+
+Logical roles
+-------------
+
+Aside from the physical hardware types, there are essentially ``cluster`` nodes
+and ``meta`` nodes. The ``cluster`` nodes are the compute blades, and ``meta``
+are any additional systems involved. Individual nodes might be tagged with roles
+as well to indicate additional capabilities, such as ``ai`` for ``cluster`` nodes
+with TPUs or ``storage`` for ``cluster`` nodes with additional (e.g. 1TB) storage.
