@@ -3,6 +3,22 @@ packer
 
 `packer <https://www.packer.io/>`_ is used to generate the base images for the cluster.
 
+Quick workflow
+--------------
+
+All of these instructions assume you are in the ``packer`` directory.
+
+The first time, make sure dependencies are installed and run ``./install-packer.sh``.
+
+1. If updates to the image spec are needed, edit `ubuntu-boards.yml` and run 
+
+.. shell ::
+    bazel run //packer:ubuntu-board-gen -f $(pwd)/ubuntu-boards.yml -o $(pwd)/boards
+
+This will place the board with a default name in the ``boards`` directory.
+
+2. Run ``./build-imagesh``. The image will be in the ``build/`` directory.
+
 Build scripts
 -------------
 
@@ -107,5 +123,8 @@ provisioners available. A longer example would look like
 
 The order of precedence for provisioners is local scripts (which might be used
 to generate files), files, and then scripts.
+
+Any generated files should be placed in ``build/``, and any scripts should be
+placed in ``scripts/`` for consistency.
 
 .. _boards: https://github.com/mkaczanowski/packer-builder-arm/tree/master/boards

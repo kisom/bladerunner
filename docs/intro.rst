@@ -14,11 +14,14 @@ There are some assumptions made:
 2. The primary target for this setup is Ubuntu 22.04. This needs to be 
    validated still.
 
-There are three types of systems:
+There are three physical types of systems:
 
 - ``dev`` indicates DEV compute blades.
 - ``tpm`` indicates TPM compute blades.
-- ``gw`` indicates the gateway system, which may perform other functions.
+- ``adm`` indicates an admin system, which will likely be a CM4 carrier board
+  in non-blade form. I foresee two types of systems: ``adm`` runs administrative
+  services (such as a PXE boot server) and ``gw`` managing networking with the
+  outside world.
 
 The `computeblade docs <https://docs.computeblade.com/>`_ has a description of
 the different blade types.
@@ -89,4 +92,3 @@ the gateway system as the storage machine if needed.
 +----------------------------+----------+----------------------------------------+
 | Netgear GS316PP            | 1        | 16-port PoE+ (183W)                    |
 +----------------------------+----------+----------------------------------------+
-
