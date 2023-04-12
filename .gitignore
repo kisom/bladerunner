@@ -1,8 +1,10 @@
-packer/build
-*.xz
-*.img
-
 bazel-bin
 bazel-bladerunner
 bazel-out
 bazel-testlogs
+
+docs/_build
+
+packer/build
+*.xz
+*.img
