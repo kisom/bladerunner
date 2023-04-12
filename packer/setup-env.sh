@@ -3,16 +3,17 @@
 set -euxo pipefail
 
 IMAGE_TYPE="${1:-ubuntu}"
-PACKER_BUILD_FILE=
 
-errmsg () {
-    echo "$@" > /dev/stderr
-}
-
-preflight () {
+select_image () {
     case "${IMAGE_TYPE}" in
-        ubuntu) PACKER_BUILD_FILE="boards/pi-cm4-ubuntu-22.04.2.json" ;;
+        ubuntu) 
+            PACKER_BUILD_FILE="boards/pi-cm4-ubuntu-22.04.2.json" ;;
+            REMOTE_IMAGE_URL="$(jq '.builders[0].file_urls' boards/pi-cm4-ubuntu-22.04.2.json | grep https | tr -d ' \"')"
+
         raspbian) PACKER_BUILD_FILE="boards/raspberry-pi/raspios-lite-arm.json" ;;
+            PACKER_BUILD_FILE="boards/pi-cm4-ubuntu-22.04.2.json" ;;
+            REMOTE_IMAGE_URL="$(jq '.builders[0].file_urls' boards/pi-cm4-ubuntu-22.04.2.json | grep https | tr -d ' \"')"
+
         custom)
             PACKER_BUILD_FILE="${2:-}"
             if [ -z "${PACKER_BUILD_FILE}" ]
@@ -31,11 +32,3 @@ preflight () {
             ;;
     esac
 }
-
-build_image () {
-    sudo packer build ${PACKER_BUILD_FILE}
-}
-
-preflight
-build_image
-

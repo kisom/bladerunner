@@ -1,0 +1,4 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix git.wntrmute.dev/kyle/bladerunner
+gazelle(name = "gazelle")

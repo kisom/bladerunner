@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "ubuntu-board-gen_lib",
+    srcs = ["main.go"],
+    importpath = "git.wntrmute.dev/kyle/bladerunner/src/cmd/ubuntu-board-gen",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//src/packer",
+        "@ht_sr_git_kisom_goutils//die:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "ubuntu-board-gen",
+    embed = [":ubuntu-board-gen_lib"],
+    visibility = ["//visibility:public"],
+)

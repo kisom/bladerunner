@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "packer",
+    srcs = [
+        "board.go",
+        "builder.go",
+        "packer.go",
+        "provisioner.go",
+        "ubuntu.go",
+    ],
+    importpath = "git.wntrmute.dev/kyle/bladerunner/src/packer",
+    visibility = ["//visibility:public"],
+    deps = ["@in_gopkg_yaml_v2//:go_default_library"],
+)

@@ -1,1 +1,6 @@
 packer/build
+bazel-bin
+bazel-bladerunner
+bazel-out
+.gitignore
+bazel-testlogs
