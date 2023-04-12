@@ -1,9 +1,11 @@
 package packer
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"path/filepath"
 	"strings"
 
@@ -72,7 +74,7 @@ func (spec UbuntuBoardSpec) JSONPath(base string) string {
 
 func (spec UbuntuBoardSpec) Board() Board {
 	board := Board{
-		Variables: []string{},
+		Variables: map[string]string{},
 		Builders: []Builder{
 			UbuntuBuilder(spec.Version, spec.Size, spec.ImageName),
 		},
@@ -94,11 +96,13 @@ func (spec UbuntuBoardSpec) Board() Board {
 }
 
 func LoadUbuntuSpecs(path string) (specFile UbuntuBoardSpecFile, err error) {
+	log.Println("loading from", specFile)
 	data, err := ioutil.ReadFile(path)
 	if err != nil {
 		return
 	}
 
+	log.Println("parsing specs")
 	err = yaml.Unmarshal(data, &specFile)
 	if err != nil {
 		return
@@ -124,6 +128,14 @@ func (specFile UbuntuBoardSpecFile) WriteBoards(outputDir string) error {
 			return err
 		}
 
+		buf := &bytes.Buffer{}
+		err = json.Indent(buf, contents, "", "    ")
+		if err != nil {
+			return err
+		}
+		contents = buf.Bytes()
+
+		log.Println("writing spec to", dest)
 		err = ioutil.WriteFile(dest, contents, 0644)
 		if err != nil {
 			return err

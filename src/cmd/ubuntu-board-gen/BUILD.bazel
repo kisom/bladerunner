@@ -7,7 +7,7 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "//src/packer",
-        "@ht_sr_git_kisom_goutils//die:go_default_library",
+        "@ht_sr_git_kisom_goutils//die",
     ],
 )
 

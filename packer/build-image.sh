@@ -3,7 +3,7 @@
 set -euxo pipefail
 
 IMAGE_TYPE="${1:-ubuntu}"
-PACKER_BUILD_FILE=
+PACKER_BUILD_FILE="${2:-}"
 
 errmsg () {
     echo "$@" > /dev/stderr
@@ -14,7 +14,6 @@ preflight () {
         ubuntu) PACKER_BUILD_FILE="boards/pi-cm4-ubuntu-22.04.2.json" ;;
         raspbian) PACKER_BUILD_FILE="boards/raspberry-pi/raspios-lite-arm.json" ;;
         custom)
-            PACKER_BUILD_FILE="${2:-}"
             if [ -z "${PACKER_BUILD_FILE}" ]
             then
                 errmsg "[!] custom board requires a board file path"
