@@ -30,16 +30,15 @@ preflight () {
             fi
 	    ;;
         custom)
-            PACKER_BUILD_FILE="${2:-}"
-            if [ "${SKIP_LOCAL_CACHE}" != "yes" ]
-            then
-                REMOTE_IMAGE_URL="$(jq '.builders[0].file_urls' ${PACKER_BUILD_FILE} | grep https | tr -d ' \",')"
-            fi
-
             if [ -z "${PACKER_BUILD_FILE}" ]
             then
                 errmsg "[!] custom board requires a board file path"
                 exit 1
+            fi
+
+            if [ "${SKIP_LOCAL_CACHE}" != "yes" ]
+            then
+                REMOTE_IMAGE_URL="$(jq '.builders[0].file_urls' ${PACKER_BUILD_FILE} | grep https | tr -d ' \",')"
             fi
             ;;
         *)
