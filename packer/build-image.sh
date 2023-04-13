@@ -80,7 +80,13 @@ build_image () {
     sudo packer build ${PACKER_BUILD_FILE}
 }
 
-preflight
-cache_remote_url
-build_image
+main () {
+    preflight
+    cache_remote_url
+    build_image
+}
 
+if [ "$0" = "-bash" ]
+then
+    main
+fi

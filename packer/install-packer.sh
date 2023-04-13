@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-set -eux
+if [[ "${BASH_SOURCE[0]}" = "${0}" ]]
+then
+    set -euxo pipefail
+    RUN_MAIN=yes
+else
+    RUN_MAIN=no
+fi
 
 PACKER_VERSION=1.8.6
 INSTALL_DIR=/usr/local/bin
@@ -11,7 +17,7 @@ UPGRADE="false"
 BUILD_DIR="$(pwd)/build"
 FORCE_DEPENDENCY_INSTALL="${FORCE_DEPENDENCY_INSTALL:-no}"
 
-prep () {
+preflight () {
     if [ -z "$(command -v git)" -o "${FORCE_DEPENDENCY_INSTALL}" = "yes" ]
     then
         sudo apt-get update && sudo apt-get -y install git unzip qemu-user-static e2fsprogs dosfstools libarchive-tools xz-utils jq
@@ -54,7 +60,14 @@ cleanup () {
     popd
 }
 
-prep
-install_packer
-install_packer_builder_arm
-cleanup
+main () {
+    preflight
+    install_packer
+    install_packer_builder_arm
+    cleanup
+}
+
+if [[ "${RUN_MAIN}" = "yes" ]]
+then
+    main
+fi
