@@ -3,8 +3,17 @@ boards:
     size: 32G
     name: cm4-cluster-ubuntu-22.04.2.img
     files:
-      - source: files/authorized-keys
-        destination: /tmp/authorized-keys
+      - source: files/user-data
+        destination: /boot/firmware/user-data
+    scripts:
+      - scripts/install-base.sh
+      - scripts/setup-ssh.sh
+  - version: 22.04.2
+    size: 32G
+    name: rp4-cdev-ubuntu-22.04.2.img
+    files:
+      - source: files/user-data
+        destination: /boot/firmware/user-data
     scripts:
       - scripts/install-base.sh
       - scripts/setup-ssh.sh
