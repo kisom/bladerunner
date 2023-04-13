@@ -1,0 +1,51 @@
+#cloud-config
+
+# This is the user-data configuration file for cloud-init. By default this sets
+# up an initial user called "ubuntu" with password "ubuntu", which must be
+# changed at first login. However, many additional actions can be initiated on
+# first boot from this file. The cloud-init documentation has more details:
+#
+# https://cloudinit.readthedocs.io/
+chpasswd:
+  expire: false
+  list:
+  - ubuntu:ubuntu
+
+hostname: rp3b-cdev
+ssh_pwauth: true
+ssh_authorized_keys:
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM47gCbb0BQOm6H4Ol8DEKD+CXTNYDJxe7QvJhdLZR/F kyle@petrichor
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGea83yMIdCi0QUUPgmhRgIrii7lS1dYxZ6LSxSsDOph kyle@europa
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEbkHs8zGZ3L6tRILjX7Cph8kXSpuw665mxe4ak2dwIx kyle@hermes
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICOCXJx+3ynRraM0JIsUy6Cin9JByPW/EUV9ggtuUCbC kyle@freeside
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfRxWmx30LhGnsXpauLrj3GPvBWLhAKs0EznA9cNT5q kyle@deimos
+ssh_deletekeys: true
+ssh_genkeytypes: [rsa, ecdsa, ed25519]
+disable_root: true
+
+resize_rootfs: true
+
+## Update apt database and upgrade packages on first boot
+#package_update: true
+#package_upgrade: true
+
+## Install additional packages on first boot
+#packages:
+#- avahi-daemon
+#- rng-tools
+#- python3-gpiozero
+#- [python3-serial, 3.5-1]
+
+## Run arbitrary commands at rc.local like time
+#runcmd:
+#- [ ls, -l, / ]
+#- [ sh, -xc, "echo $(date) ': hello world!'" ]
+#- [ wget, "http://ubuntu.com", -O, /run/mydir/index.html ]
+
+network:
+  Version: 2
+  Renderer: networkd
+  ethernets:
+      eth0:
+        dhcp4: yes
+
