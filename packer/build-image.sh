@@ -2,6 +2,14 @@
 
 set -euxo pipefail
 
+if [[ "${BASH_SOURCE[0]}" = "${0}" ]]
+then
+    set -euxo pipefail
+    RUN_MAIN=yes
+else
+    RUN_MAIN=no
+fi
+
 IMAGE_TYPE="${1:-ubuntu}"
 PACKER_BUILD_FILE="${2:-}"
 SKIP_LOCAL_CACHE="${SKIP_LOCAL_CACHE:-no}"
@@ -86,7 +94,7 @@ main () {
     build_image
 }
 
-if [ "$0" = "-bash" ]
+if [[ "${RUN_MAIN}" = "yes" ]]
 then
     main
 fi
