@@ -1,6 +1,9 @@
 Node Provisioning
 =================
 
+First boot
+----------
+
 What needs to happen when a node first boots up?
 
 - It needs to find the network.
@@ -8,7 +11,8 @@ What needs to happen when a node first boots up?
 - Storage should be provisioned.
 - Ansible should be run to set up any software.
 
-Questions:
+Questions
+---------
 
 1. What should boot look like after the first PXE boot?
    - PXE boot and run ansible each time?
@@ -18,3 +22,4 @@ Questions:
      future?
 2. What can we do with the TPM?
    - It needs to be registered on first boot.
+3. What should be done in the initramfs vs cloud-init?
