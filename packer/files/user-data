@@ -1,15 +1,13 @@
 #cloud-config
 
-# This is the user-data configuration file for cloud-init. By default this sets
-# up an initial user called "ubuntu" with password "ubuntu", which must be
-# changed at first login. However, many additional actions can be initiated on
-# first boot from this file. The cloud-init documentation has more details:
-#
-# https://cloudinit.readthedocs.io/
+# NOTE: this is a dev-environment fixture where I want a known user:pass to
+# login on the serial console if things go sideways.
 chpasswd:
   expire: false
   list:
-  - ubuntu:ubuntu
+  - name: ubuntu
+    password: ubuntu
+    type: text
 
 hostname: rp3b-cdev
 ssh_pwauth: true
@@ -48,4 +46,11 @@ network:
   ethernets:
       eth0:
         dhcp4: yes
-
+        dhcp6: yes
+      eth1:
+        dhcp4: no
+        dhcp6: no
+        addresses:
+          "192.168.4.64/24"
+            label: "cluster"
+            lifetime: forever

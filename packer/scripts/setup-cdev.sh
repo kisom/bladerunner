@@ -2,4 +2,4 @@
 
 set -euxo pipefail
 
-sudo apt-get -y install picocom wpasupplicant
+apt-get -y install picocom wpasupplicant

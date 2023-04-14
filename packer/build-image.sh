@@ -18,33 +18,24 @@ errmsg () {
     echo "$@" > /dev/stderr
 }
 
-IMAGE_TYPE="${1:-ubuntu}"
+IMAGE_TYPE="${1:-cnode}"
 
 preflight () {
     case "${IMAGE_TYPE}" in
-        ubuntu) 
-            PACKER_BUILD_FILE="boards/cm4-cluster-ubuntu-22.04.2.json"
-            if [ "${SKIP_LOCAL_CACHE}" != "yes" ]
-            then
-                REMOTE_IMAGE_URL="$(jq '.builders[0].file_urls' ${PACKER_BUILD_FILE} | grep https | tr -d ' \",')"
-            fi
-	    ;;
+        cdev) PACKER_BUILD_FILE="boards/cm4-cdev-ubuntu-22.04.2.json" ;;    
+        cnode)  PACKER_BUILD_FILE="cm4-cluster-ubuntu-22.04.2.img" ;;
         custom)
             if [ -z "${PACKER_BUILD_FILE}" ]
             then
                 errmsg "[!] custom board requires a board file path"
                 exit 1
             fi
-
-            if [ "${SKIP_LOCAL_CACHE}" != "yes" ]
-            then
-                REMOTE_IMAGE_URL="$(jq '.builders[0].file_urls' ${PACKER_BUILD_FILE} | grep https | tr -d ' \",')"
-            fi
             ;;
         *)
             errmsg "[!] invalid image type ${IMAGE_TYPE}."
             errmsg "[!] valid image types are"
-            errmsg "    - ubuntu"
+            errmsg "    - cdev"
+            errmsg "    - cnode"
             errmsg "    - custom path/to/board/file"
             exit 1
             ;;
@@ -58,6 +49,7 @@ cache_remote_url () {
         return 0
     fi
 
+    local REMOTE_IMAGE_URL="$(jq '.builders[0].file_urls' ${PACKER_BUILD_FILE} | grep https | tr -d ' \",')"
     local CACHED_FILE="$(jq '.builders[0].file_urls' ${PACKER_BUILD_FILE} | grep -v https | grep \" | tr -d ' \",')"
     if [ -z "${CACHED_FILE}" ]
     then
