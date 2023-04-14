@@ -59,8 +59,8 @@
             "type": "file"
         },
         {
-            "destination": "/etc/systemd/system/tailscale.service",
-            "source": "files/tailscale.service",
+            "destination": "/etc/netplan/10-network.yaml",
+            "source": "files/network-dev.yaml",
             "type": "file"
         },
         {

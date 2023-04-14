@@ -5,11 +5,9 @@
 chpasswd:
   expire: false
   list:
-  - name: ubuntu
-    password: ubuntu
-    type: text
+    - ubuntu:ubuntu
 
-hostname: cluster-cdev
+hostname: cdev
 ssh_pwauth: true
 ssh_authorized_keys:
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM47gCbb0BQOm6H4Ol8DEKD+CXTNYDJxe7QvJhdLZR/F kyle@petrichor
@@ -24,17 +22,21 @@ disable_root: true
 resize_rootfs: true
 
 network:
-  Version: 2
-  Renderer: networkd
+  version: 2
+  renderer: networkd
   ethernets:
     eth0:
       dhcp4: no
       dhcp6: no
       addresses:
-        "192.168.4.64/24"
-          label: "cluster"
-          lifetime: forever
+        - 192.168.4.64/24
     eth1:
       dhcp4: yes
       dhcp6: yes
-
+  wifis:
+    wlan0:
+      dhcp4: yes
+      dhcp6: yes
+      access-points:
+        "ATTjrThnDS":
+          password: "b#ifs9zv5epx"

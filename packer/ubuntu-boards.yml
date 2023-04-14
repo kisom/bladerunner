@@ -5,6 +5,8 @@ boards:
     files:
       - source: files/user-data_cnode
         destination: /boot/firmware/user-data
+      - source: files/netplan-node.yaml
+        destination: /etc/netplan/10-network.yaml
     scripts:
       - scripts/setup-base.sh
       - scripts/setup-ssh.sh
@@ -18,8 +20,8 @@ boards:
         destination: /etc/hosts
       - source: files/dnsmasq.conf
         destination: /etc/dnsmasq.conf
-      - source: files/tailscale.service
-        destination: /etc/systemd/system/tailscale.service
+      - source: files/netplan-dev.yaml
+        destination: /etc/netplan/10-network.yaml
     scripts:
       - scripts/setup-base.sh
       - scripts/setup-ssh.sh

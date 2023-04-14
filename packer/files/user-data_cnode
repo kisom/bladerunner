@@ -5,9 +5,7 @@
 chpasswd:
   expire: false
   list:
-  - name: ubuntu
-    password: ubuntu
-    type: text
+    - ubuntu:ubuntu
 
 hostname: node16
 ssh_pwauth: true
@@ -23,10 +21,3 @@ disable_root: true
 
 resize_rootfs: true
 
-network:
-  Version: 2
-  Renderer: networkd
-  ethernets:
-      eth0:
-        dhcp4: yes
-        dhcp6: yes

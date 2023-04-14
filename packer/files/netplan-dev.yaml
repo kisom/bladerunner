@@ -1,0 +1,14 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: yes
+      dhcp6: yes
+    eth1:
+      dhcp4: no
+      dhcp6: no
+      addresses:
+        - "192.168.4.64/24"
+
+# dev nodes may also use wireless, which requires serial console to setup.

@@ -49,6 +49,11 @@
             "type": "file"
         },
         {
+            "destination": "/etc/netplan/10-network.yaml",
+            "source": "files/netplan-node.yaml",
+            "type": "file"
+        },
+        {
             "scripts": [
                 "scripts/setup-base.sh",
                 "scripts/setup-ssh.sh"
