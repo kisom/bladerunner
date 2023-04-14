@@ -1,0 +1,40 @@
+#cloud-config
+
+# NOTE: this is a dev-environment fixture where I want a known user:pass to
+# login on the serial console if things go sideways.
+chpasswd:
+  expire: false
+  list:
+  - name: ubuntu
+    password: ubuntu
+    type: text
+
+hostname: cluster-cdev
+ssh_pwauth: true
+ssh_authorized_keys:
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM47gCbb0BQOm6H4Ol8DEKD+CXTNYDJxe7QvJhdLZR/F kyle@petrichor
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGea83yMIdCi0QUUPgmhRgIrii7lS1dYxZ6LSxSsDOph kyle@europa
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEbkHs8zGZ3L6tRILjX7Cph8kXSpuw665mxe4ak2dwIx kyle@hermes
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICOCXJx+3ynRraM0JIsUy6Cin9JByPW/EUV9ggtuUCbC kyle@freeside
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfRxWmx30LhGnsXpauLrj3GPvBWLhAKs0EznA9cNT5q kyle@deimos
+ssh_deletekeys: true
+ssh_genkeytypes: [rsa, ecdsa, ed25519]
+disable_root: true
+
+resize_rootfs: true
+
+network:
+  Version: 2
+  Renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      dhcp6: no
+      addresses:
+        "192.168.4.64/24"
+          label: "cluster"
+          lifetime: forever
+    eth1:
+      dhcp4: yes
+      dhcp6: yes
+

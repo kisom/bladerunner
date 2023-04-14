@@ -45,12 +45,27 @@
     "provisioners": [
         {
             "destination": "/boot/firmware/user-data",
-            "source": "files/user-data",
+            "source": "files/user-data_cdev",
+            "type": "file"
+        },
+        {
+            "destination": "/etc/hosts",
+            "source": "files/hosts",
+            "type": "file"
+        },
+        {
+            "destination": "/etc/dnsmasq.conf",
+            "source": "files/dnsmasq.conf",
+            "type": "file"
+        },
+        {
+            "destination": "/etc/systemd/system/tailscale.service",
+            "source": "files/tailscale.service",
             "type": "file"
         },
         {
             "scripts": [
-                "scripts/install-base.sh",
+                "scripts/setup-base.sh",
                 "scripts/setup-ssh.sh",
                 "scripts/setup-cdev.sh"
             ],

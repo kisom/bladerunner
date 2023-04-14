@@ -12,7 +12,7 @@ bladerunner
 
    intro
    dev
-   provisioning
+   node-provisioning
    packer
    tools
 

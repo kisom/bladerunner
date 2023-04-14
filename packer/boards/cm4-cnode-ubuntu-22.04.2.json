@@ -16,7 +16,7 @@
                 "$ARCHIVE_PATH"
             ],
             "image_build_method": "reuse",
-            "image_path": "build/rp4-cdev-ubuntu-22.04.2.img",
+            "image_path": "build/cm4-cnode-ubuntu-22.04.2.img",
             "image_size": "32G",
             "image_type": "dos",
             "image_partitions": [
@@ -45,12 +45,12 @@
     "provisioners": [
         {
             "destination": "/boot/firmware/user-data",
-            "source": "files/user-data",
+            "source": "files/user-data_cnode",
             "type": "file"
         },
         {
             "scripts": [
-                "scripts/install-base.sh",
+                "scripts/setup-base.sh",
                 "scripts/setup-ssh.sh"
             ],
             "type": "shell"

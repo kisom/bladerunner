@@ -9,7 +9,7 @@ chpasswd:
     password: ubuntu
     type: text
 
-hostname: rp3b-cdev
+hostname: node16
 ssh_pwauth: true
 ssh_authorized_keys:
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM47gCbb0BQOm6H4Ol8DEKD+CXTNYDJxe7QvJhdLZR/F kyle@petrichor
@@ -23,23 +23,6 @@ disable_root: true
 
 resize_rootfs: true
 
-## Update apt database and upgrade packages on first boot
-#package_update: true
-#package_upgrade: true
-
-## Install additional packages on first boot
-#packages:
-#- avahi-daemon
-#- rng-tools
-#- python3-gpiozero
-#- [python3-serial, 3.5-1]
-
-## Run arbitrary commands at rc.local like time
-#runcmd:
-#- [ ls, -l, / ]
-#- [ sh, -xc, "echo $(date) ': hello world!'" ]
-#- [ wget, "http://ubuntu.com", -O, /run/mydir/index.html ]
-
 network:
   Version: 2
   Renderer: networkd
@@ -47,10 +30,3 @@ network:
       eth0:
         dhcp4: yes
         dhcp6: yes
-      eth1:
-        dhcp4: no
-        dhcp6: no
-        addresses:
-          "192.168.4.64/24"
-            label: "cluster"
-            lifetime: forever

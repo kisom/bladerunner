@@ -23,7 +23,7 @@ IMAGE_TYPE="${1:-cnode}"
 preflight () {
     case "${IMAGE_TYPE}" in
         cdev) PACKER_BUILD_FILE="boards/cm4-cdev-ubuntu-22.04.2.json" ;;    
-        cnode)  PACKER_BUILD_FILE="cm4-cluster-ubuntu-22.04.2.img" ;;
+        cnode)  PACKER_BUILD_FILE="boards/cm4-cnode-ubuntu-22.04.2.json" ;;
         custom)
             if [ -z "${PACKER_BUILD_FILE}" ]
             then

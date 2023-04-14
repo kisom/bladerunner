@@ -1,20 +1,26 @@
 boards:
   - version: 22.04.2
     size: 32G
-    name: cm4-cluster-ubuntu-22.04.2.img
+    name: cm4-cnode-ubuntu-22.04.2.img
     files:
-      - source: files/user-data
+      - source: files/user-data_cnode
         destination: /boot/firmware/user-data
     scripts:
-      - scripts/install-base.sh
+      - scripts/setup-base.sh
       - scripts/setup-ssh.sh
   - version: 22.04.2
     size: 32G
     name: cm4-cdev-ubuntu-22.04.2.img
     files:
-      - source: files/user-data
+      - source: files/user-data_cdev
         destination: /boot/firmware/user-data
+      - source: files/hosts
+        destination: /etc/hosts
+      - source: files/dnsmasq.conf
+        destination: /etc/dnsmasq.conf
+      - source: files/tailscale.service
+        destination: /etc/systemd/system/tailscale.service
     scripts:
-      - scripts/install-base.sh
+      - scripts/setup-base.sh
       - scripts/setup-ssh.sh
       - scripts/setup-cdev.sh
