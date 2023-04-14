@@ -69,6 +69,10 @@ the environment variable ``SKIP_LOCAL_CACHE=yes``, it will skip doing this. It
 will also skip caching if the local file exists, though it will print a command
 to remove the file to force redownloading.
 
+It currently supports two targets: ``cdev``, for cluster development and
+management nodes, and ``cnode`` for cluster compute nodes. An additional
+target, ``custom``, can be specified along with a path to the board file.
+
 Board files
 ------------
 
