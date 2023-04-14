@@ -23,3 +23,6 @@ Questions
 2. What can we do with the TPM?
    - It needs to be registered on first boot.
 3. What should be done in the initramfs vs cloud-init?
+4. What sort of clustering software should we use?
+   - Some sort of container management?
+   - Kubernetes?
