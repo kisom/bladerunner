@@ -43,6 +43,11 @@ Below is a diagram of the planned system.
             tpm03;
             tpm04;
             tpm05;
+
+            pi401;
+            pi402;
+            pi403;
+            pi404;
         }
 
         "poe-switch" -> dev01 [dir=both];
@@ -57,8 +62,16 @@ Below is a diagram of the planned system.
         "poe-switch" -> tpm04 [dir=both];
         "poe-switch" -> tpm05 [dir=both];
 
-        "poe-switch" -> gw [dir=both];
-        publicnet    -> gw [dir=both];
+        "poe-switch" -> pi401 [dir=both];
+        "poe-switch" -> pi402 [dir=both];
+        "poe-switch" -> pi403 [dir=both];
+        "poe-switch" -> pi404 [dir=both];
+
+        "poe-switch" -> haven [dir=both];
+        "poe-switch" -> build [dir=both];
+
+        "poe-switch" -> controller [dir=both];
+        publicnet    -> controller [dir=both];
     }
 
 

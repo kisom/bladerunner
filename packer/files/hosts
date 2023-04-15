@@ -25,8 +25,6 @@
 # infrastructure systems #
 ##########################
 
-192.168.4.32    chaven01    # Zymbit D35 secure services system
-192.168.4.33    cbuild01    # build server
-
-192.168.4.64    control     # cluster controller and router
-192.168.4.65    cdev        # cluster dev machine   
+192.168.4.252   haven01    # Zymbit D35 secure services system
+192.168.4.253   build01    # build server
+192.168.4.254   controller # cluster controller and router

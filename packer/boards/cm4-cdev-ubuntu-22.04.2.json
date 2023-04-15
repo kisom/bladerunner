@@ -60,7 +60,7 @@
         },
         {
             "destination": "/etc/netplan/10-network.yaml",
-            "source": "files/network-dev.yaml",
+            "source": "files/netplan-dev.yaml",
             "type": "file"
         },
         {
