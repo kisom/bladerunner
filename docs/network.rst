@@ -23,6 +23,9 @@ reason to take up the space.
 + the cluster controller and router is assigned the host address ``.254``,
   hostname ``controller``.
 
+All the ports have PoE+ enabled, but I think the infrastructure services
+machines will run on mains.
+
 Infrastructure services
 -----------------------
 
