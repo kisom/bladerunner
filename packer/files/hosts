@@ -18,13 +18,18 @@
 192.168.4.12    node12      # pi4
 192.168.4.13    node13      # pi4
 192.168.4.14    node14      # pi4
-192.168.4.15    node15      # reserved
-192.168.4.16    node16      # reserved
+192.168.4.15    node15      # pi4
+192.168.4.16    node16      # pi4
+192.168.4.17    node17      # pi4
+192.168.4.18    node18      # pi4
+
 
 ##########################
 # infrastructure systems #
 ##########################
 
-192.168.4.252   haven01    # Zymbit D35 secure services system
-192.168.4.253   build01    # build server
-192.168.4.254   controller # cluster controller and router
+192.168.4.250	cdev	    # cluster dev machine
+192.168.4.251   pkgsrv01    # apt package repo
+192.168.4.252   haven01     # Zymbit D35 secure services system
+192.168.4.253   build01     # build server
+192.168.4.254   control     # cluster controller and router
