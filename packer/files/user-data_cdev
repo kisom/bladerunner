@@ -33,10 +33,3 @@ network:
     eth1:
       dhcp4: yes
       dhcp6: yes
-  wifis:
-    wlan0:
-      dhcp4: yes
-      dhcp6: yes
-      access-points:
-        "ATTjrThnDS":
-          password: "b#ifs9zv5epx"

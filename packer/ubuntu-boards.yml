@@ -26,3 +26,14 @@ boards:
       - scripts/setup-base.sh
       - scripts/setup-ssh.sh
       - scripts/setup-cdev.sh
+  - version: 22.04.2
+    size: 32G
+    name: cm4-router-ubuntu-22.04.2.img
+    files:
+      - source: files/user-data_router
+        destination: /boot/firmware/user-data
+      - source: files/netplan-router.yaml
+        destination: /etc/netplan/10-network.yaml
+    scripts:
+      - scripts/setup-base.sh
+      - scripts/setup-ssh.sh
