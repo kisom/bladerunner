@@ -7,7 +7,7 @@ chpasswd:
   list:
     - ubuntu:ubuntu
 
-hostname: node16
+hostname: node
 ssh_pwauth: true
 ssh_authorized_keys:
   - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM47gCbb0BQOm6H4Ol8DEKD+CXTNYDJxe7QvJhdLZR/F kyle@petrichor
